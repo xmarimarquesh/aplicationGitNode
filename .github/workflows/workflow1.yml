@@ -21,5 +21,5 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-module: app-ets-web
-          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+          publish-profile: ${{secrets.AZURE_PUBLISH_PROFILE}}
           package: ./NovaAplicacao
