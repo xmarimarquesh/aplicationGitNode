@@ -1,0 +1,25 @@
+name: Deploy to Azure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v3
+      - name: Setup Node.js version
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - name: Install Dependences
+        run: npm install
+      - name: Deploy on azure
+        uses: azure/webapps-deploy@v2
+        with:
+          app-module: app-ets-web
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+          package: ./NovaAplicacao
